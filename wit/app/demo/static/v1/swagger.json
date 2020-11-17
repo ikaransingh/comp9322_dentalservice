@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "description": "This is a dental clinic system using a chatbot and dockerized services",
+    "title": "ML dental clinic system ",
+    "contact": {
+      "email": "k.singh.1@student.unsw.edu.au"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "default",
+      "description": "Everything about dental clinic system",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "paths": {
+    "/chat": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "user interaction with chatbox service",
+        "description": "You can ask about available dentist, timeslots, make booking and cancel booking",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "expression",
+            "description": "user sentence e.g.  Who are available dentists?",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "patientName",
+            "description": "Enter your name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "answer": {
+                  "type": "string"
+                },
+                "patientName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
