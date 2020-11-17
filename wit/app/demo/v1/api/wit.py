@@ -1,6 +1,7 @@
 import requests
 from .credentials import WIT_TOKEN
 from .dentist_api import get_dentists
+from .dentist_api import get_dentists_info
 from .timeslot_api import get_yelp_info
 
 
@@ -15,10 +16,11 @@ def wit(expression):
             
             print('i am calling get_dentists()')
             answer = get_dentists()
-        # if json_result['intents'][0]['name'] == 'GetRestaurants':
-        #     location = json_result['entities']['wit$location:location'][0]['body']
-        #     print('location detected: {}'.format(location))
-        #     answer = get_yelp_info(location)
+
+        if json_result['intents'][0]['name'] == 'getDentistsInfo':
+            dentistName = json_result['entities']['wit$contact:contact'][0]['body']
+            print('Name detected: {}'.format(dentistName))
+            answer = get_dentists_info(dentistName)
     except:
         answer = 'I do not understand :('
     return answer

@@ -15,6 +15,12 @@ def get_dentists():
            f"{json_result['result'][1]['dentistName']}, and " \
            f"{json_result['result'][2]['dentistName']}"
 
+def get_dentists_info(dentistName):
+    result = requests.get('http://127.0.0.1:8080/v1/dentists/{}'.format(dentistName))
+    # 'http://127.0.0.1:8080/v1/dentists/Dr.%20Virdi'
+    json_result = result.json()
+    print(json_result)
+
 
 def get_weather_info(location):
     result = requests.get('https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'

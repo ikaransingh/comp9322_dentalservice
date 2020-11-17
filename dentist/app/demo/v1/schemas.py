@@ -56,8 +56,8 @@ validators = {
 }
 
 filters = {
-    ('dentists', 'GET'): {200: {'headers': None, 'schema': {'type': 'object', 'properties': {'result': {'type': 'string', 'example': [{'d_id': '1', 'dentistName': 'Dr. Manish', 'specialization': 'Paediatric Dentistry', 'location': 'Maroubra'}, {'d_id': '2', 'dentistName': 'Dr. Virdi', 'specialization': 'Orthodontics', 'location': 'Eastlakes'}, {'d_id': '3', 'dentistName': 'Dr. Oliver', 'specialization': 'Oral Surgery', 'location': 'Newtown'}]}}}}, 500: {'headers': None, 'schema': None}},
-    ('dentists_dentist_name', 'GET'): {200: {'headers': None, 'schema': {'type': 'object', 'properties': {'result': {'type': 'string', 'example': [{'d_id': '1', 'dentistName': 'Dr. Manish', 'specialization': 'Paediatric Dentistry', 'location': 'Maroubra'}]}}}}, 500: {'headers': None, 'schema': None}},
+    ('dentists', 'GET'): {200: {'headers': None, 'schema': {'type': 'object', 'properties': {'result': {'type': 'string', 'example': [{'d_id': '1', 'dentistName': 'Dr. Manish', 'specialization': 'Paediatric Dentistry', 'location': 'Maroubra'}, {'d_id': '2', 'dentistName': 'Dr. Virdi', 'specialization': 'Orthodontics', 'location': 'Eastlakes'}, {'d_id': '3', 'dentistName': 'Dr. Oliver', 'specialization': 'Oral Surgery', 'location': 'Newtown'}]}}}}, 404: {'headers': None, 'schema': None}, 500: {'headers': None, 'schema': None}},
+    ('dentists_dentist_name', 'GET'): {200: {'headers': None, 'schema': {'type': 'object', 'properties': {'result': {'type': 'string', 'example': [{'d_id': '1', 'dentistName': 'Dr. Manish', 'specialization': 'Paediatric Dentistry', 'location': 'Maroubra'}]}}}}, 404: {'headers': None, 'schema': None}, 500: {'headers': None, 'schema': None}},
 }
 
 scopes = {

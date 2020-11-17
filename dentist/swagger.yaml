@@ -32,7 +32,7 @@ paths:
       - "application/json"
       
       responses:
-        "200":
+        200:
           description: "successful operation"
           schema:
             type: "object"
@@ -41,24 +41,29 @@ paths:
                 type: "string"
                 example: [{d_id: "1", dentistName: "Dr. Manish", specialization: "Paediatric Dentistry", location: "Maroubra"},{d_id: "2", dentistName: "Dr. Virdi", specialization: "Orthodontics", location: "Eastlakes" },{d_id: "3", dentistName: "Dr. Oliver", specialization: "Oral Surgery", location: "Newtown" }]
               
-        "500":
+        404:
+          description: "Not Found"
+        
+        500:
           description: "Internal server error"
+        
+        
           
   /dentists/{dentist_name}:
     get:
-      operationId: get_dentist
+      operationId: "get_dentist"
       parameters:
-        - name: dentist_name
+        - name: "dentist_name"
           in: "path"
-          type: string
-          default: Dr. Virdi
+          type: "string"
+          default: "Dr. Virdi"
           required: true
-      summary: return dentist's information
+      summary: "return dentist's information"
       produces:
       - "application/json"
       responses:
         200:
-          description: OK
+          description: "successful operation"
           schema:
             type: "object"
             properties:
@@ -66,8 +71,13 @@ paths:
                 type: "string"
                 example: [{d_id: "1", dentistName: "Dr. Manish", specialization: "Paediatric Dentistry", location: "Maroubra"}]
               
-        "500":
+        404:
+          description: "Not Found"
+        
+        500:
           description: "Internal server error"
+          
+        
     
 
              
