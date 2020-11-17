@@ -47,8 +47,22 @@ paths:
       tags:
       - "default"
       summary: "return all bookings"
-      
-      
+      parameters:
+        - in: "query"
+          name: patientName
+          description: Enter patient name
+          required: true
+          type: string
+        - in: query
+          name: dentistName
+          description: Enter dentist name
+          required: true
+          type: string
+        - in: query
+          name: timeslot
+          description: Enter timeslot
+          required: true
+          type: string
       
       produces:
       - "application/json"

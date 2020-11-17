@@ -62,30 +62,7 @@
         "tags": [
           "default"
         ],
-        "summary": "return booking id",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "patientName",
-            "description": "Enter patient name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "dentistName",
-            "description": "Enter dentist name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "timeslot",
-            "description": "Enter timeslot",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "summary": "return all bookings",
         "produces": [
           "application/json"
         ],
@@ -95,15 +72,37 @@
             "schema": {
               "type": "object",
               "properties": {
-                "b_id": {
+                "result": {
                   "type": "string",
-                  "example": "1000"
+                  "example": [
+                    {
+                      "b_id": "1000",
+                      "patientName": "Krishna",
+                      "dentistName": "Dr. Manish",
+                      "timeslot": "10"
+                    },
+                    {
+                      "b_id": "1001",
+                      "patientName": "Mohit",
+                      "dentistName": "Dr. Virdi",
+                      "timeslot": "11"
+                    },
+                    {
+                      "b_id": "1002",
+                      "patientName": "Rahul",
+                      "dentistName": "Dr. Oliver",
+                      "timeslot": "12"
+                    }
+                  ]
                 }
               }
             }
           },
           "500": {
             "description": "Internal server error"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
@@ -127,6 +126,9 @@
           },
           "500": {
             "description": "Internal server error"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
