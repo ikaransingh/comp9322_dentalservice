@@ -122,13 +122,29 @@
         ],
         "responses": {
           "201": {
-            "description": "created"
+            "description": "created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": [
+                    {
+                      "b_id": "1003",
+                      "dentistName": "Dr. Virdi",
+                      "patientName": "Krishna",
+                      "timeslot": "10"
+                    }
+                  ]
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal server error"
           },
-          "404": {
-            "description": "Not Found"
+          "400": {
+            "description": "Invalid"
           }
         }
       }
@@ -154,7 +170,16 @@
         ],
         "responses": {
           "204": {
-            "description": "delete successful operation"
+            "description": "delete successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "b_id": {
+                  "type": "string",
+                  "example": "1003"
+                }
+              }
+            }
           },
           "400": {
             "description": "Invalid ID supplied"

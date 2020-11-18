@@ -59,8 +59,8 @@ validators = {
 filters = {
     ('timeslots', 'GET'): {200: {'headers': None, 'schema': {'type': 'object', 'properties': {'timeslot': {'type': 'string', 'example': ['9', '10', '11', '12']}}}}, 500: {'headers': None, 'schema': None}},
     ('booking', 'GET'): {200: {'headers': None, 'schema': {'type': 'object', 'properties': {'result': {'type': 'string', 'example': [{'b_id': '1000', 'patientName': 'Krishna', 'dentistName': 'Dr. Manish', 'timeslot': '10'}, {'b_id': '1001', 'patientName': 'Mohit', 'dentistName': 'Dr. Virdi', 'timeslot': '11'}, {'b_id': '1002', 'patientName': 'Rahul', 'dentistName': 'Dr. Oliver', 'timeslot': '12'}]}}}}, 500: {'headers': None, 'schema': None}, 404: {'headers': None, 'schema': None}},
-    ('booking', 'POST'): {201: {'headers': None, 'schema': None}, 500: {'headers': None, 'schema': None}, 404: {'headers': None, 'schema': None}},
-    ('booking_b_id', 'DELETE'): {204: {'headers': None, 'schema': None}, 400: {'headers': None, 'schema': None}},
+    ('booking', 'POST'): {201: {'headers': None, 'schema': {'type': 'object', 'properties': {'result': {'type': 'string', 'example': [{'b_id': '1003', 'dentistName': 'Dr. Virdi', 'patientName': 'Krishna', 'timeslot': '10'}]}}}}, 500: {'headers': None, 'schema': None}, 400: {'headers': None, 'schema': None}},
+    ('booking_b_id', 'DELETE'): {204: {'headers': None, 'schema': {'type': 'object', 'properties': {'b_id': {'type': 'string', 'example': '1003'}}}}, 400: {'headers': None, 'schema': None}},
 }
 
 scopes = {

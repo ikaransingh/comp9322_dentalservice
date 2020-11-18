@@ -40,6 +40,7 @@ class Booking(Resource):
         if len(id)==0:
             new_id=1000
         else:
+            id.sort()
             new_id = id[-1] + 1
         new_id = str(new_id)
         print(new_id, type(new_id))
@@ -47,7 +48,19 @@ class Booking(Resource):
         bookings[new_id] = {"patientName": g.json['patientName'], "dentistName": g.json['dentistName'],"timeslot":g.json['timeslot']}
         print(bookings)
         write_to_file(bookings)
-        return None, 201, None
+        result = []
+        final_result = {}
+
+        a = {}
+        a["b_id"] = new_id
+        a["dentistName"] = bookings[new_id]["dentistName"]
+        a["patientName"] = bookings[new_id]["patientName"]
+        a["timeslot"] = bookings[new_id]["timeslot"]
+        result.append(a)
+        # print(result)
+        final_result["result"] = result
+        print(final_result)
+        return final_result, 201, None
 
 def write_to_file(content):
     with open("./bookings.json", "w") as bookings:

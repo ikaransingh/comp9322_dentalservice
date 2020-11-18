@@ -11,6 +11,6 @@ class Chat(Resource):
 
     def get(self):
         print(g.args)
-        answer = wit(g.args['expression'])
+        answer = wit(g.args['expression'],g.args['patientName'])
 
         return {'answer': answer}, 200, None
