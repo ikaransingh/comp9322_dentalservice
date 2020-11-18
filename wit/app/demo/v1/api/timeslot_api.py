@@ -1,5 +1,5 @@
 import requests
-from .credentials import YELP_API_KEY
+
 
 def cancel_booking(b_id):
     print('i am inside cancel_booking api WIT')
@@ -11,9 +11,9 @@ def cancel_booking(b_id):
     print(result.status_code)
 
     if result.status_code==204:
-        return f'Your booking has been cancelled. Booking id {b_id}.'
+        return f'Your booking has been cancelled. Booking id {b_id}.',204
     else:
-        return 'No booking found with the provided booking id'
+        return 'No booking found with the provided booking id',400
 
 
 def post_make_booking(dentistName,timeslot,patientName):
@@ -62,11 +62,11 @@ def post_make_booking(dentistName,timeslot,patientName):
             return f" Congrats {json_result2['result'][0]['patientName']}! The booking is confirmed." \
                     f"The booking id is {json_result2['result'][0]['b_id']}. " \
                    f"Your dentist name is {json_result2['result'][0]['dentistName']}. " \
-                   f"Your timeslot is {json_result2['result'][0]['timeslot']}. "
+                   f"Your timeslot is {json_result2['result'][0]['timeslot']}. ",200
         else:
-            return f"This timeslot {timeslot} is not available."
+            return f"This timeslot {timeslot} is not available.",400
     else:
-        return "Sorry, the dentist requested is not available."
+        return "Sorry, the dentist requested is not available.",400
 
 def get_timeslot_info():
     print('i am inside timeslots api get_timeslot_info WIT')
@@ -108,14 +108,4 @@ def get_timeslot_info():
     # return f"The available dentists are {json_result['result'][0]['dentistName']}, " \
     #        f"{json_result['result'][1]['dentistName']}, and " \
     #        f"{json_result['result'][2]['dentistName']}"
-def get_yelp_info(location):
-    result = requests.get('https://api.yelp.com/v3/businesses/search?term=restaurant&location={}'
-                          .format(location),
-                          headers={'Authorization': YELP_API_KEY})
-    json_result = result.json()
-    result = []
-    for r in json_result['businesses']:
-        if r['name'] and r['phone']:
-            row = f'{r["name"]} | {r["phone"]}'
-            result.append(row)
-    return ', '.join(result[:10])
+
